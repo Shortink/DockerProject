@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+*.log
+*.sqlite3
+*.env
+
+# Virtual env
+.venv/
+env/
+venv/
+
+# IDE
+.idea/
+
+# Bytecode + build artifacts
+build/
+dist/
+*.spec
+
+# Docker
+*.pid
+*.db
+*.bak
+*.tar
+*.gz
+
+# OS
+.DS_Store
+Thumbs.db
