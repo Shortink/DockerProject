@@ -3,7 +3,7 @@ import time
 
 def get_db():
     return psycopg2.connect(
-        host="host.docker.internal",
+        host="student-db",
         database="studentdb",
         user="postgres",
         password="postgres"
