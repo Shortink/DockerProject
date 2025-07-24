@@ -37,3 +37,19 @@ def update_student_record(student_id: str, updated: Student):
     cur.close()
     conn.close()
     return {"message": "Student updated"}
+
+def delete_student_record(student_id: str):
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM students WHERE student_id = %s", (student_id,))
+    if cur.fetchone() is None:
+        cur.close()
+        conn.close()
+        raise HTTPException(status_code=404, detail="Student does not exist")
+
+    cur.execute("DELETE FROM students WHERE student_id = %s", (student_id,))
+    conn.commit()
+    cur.close()
+    conn.close()
+    return {"message": "Student deleted successfully"}

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from server.app.models import Student
-from server.app.crud.student import create_student_record, update_student_record
+from server.app.crud.student import create_student_record, update_student_record, delete_student_record
 from psycopg2.errors import UniqueViolation
 
 router = APIRouter()
@@ -22,3 +22,12 @@ def update_student( student_id: str, student: Student):
         return {"message": "Student updated successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.delete("/student/{student_id}")
+def delete_student(student_id: str):
+    try:
+        delete_student_record(student_id)
+        return {"message": "Student deleted successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
